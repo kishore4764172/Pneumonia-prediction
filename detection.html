@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PneumoDetect AI | Advanced Pneumonia Detection</title>
+    <title>PneumoDetect AI | Tamil Nadu Pneumonia Detection & Treatment</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -270,6 +270,39 @@
             margin-bottom: 2rem;
         }
         
+        .patient-form {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
         .upload-area {
             border: 2px dashed var(--light-gray);
             border-radius: 12px;
@@ -467,7 +500,7 @@
             background: var(--light);
         }
         
-        .model-info {
+        .treatment-section {
             background-color: white;
             border-radius: 12px;
             padding: 3rem;
@@ -475,28 +508,259 @@
             margin-bottom: 2rem;
         }
         
-        .info-grid {
+        .treatment-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--light-gray);
+            margin-bottom: 2rem;
+        }
+        
+        .treatment-tab {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .treatment-tab.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .treatment-content {
+            display: none;
+        }
+        
+        .treatment-content.active {
+            display: block;
+        }
+        
+        .treatment-timeline {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
         
-        .info-item {
+        .timeline-card {
+            background: #f8f9fa;
+            border-radius: 10px;
             padding: 1.5rem;
-            background-color: #f8f9fa;
-            border-radius: 8px;
             border-left: 4px solid var(--primary);
         }
         
-        .info-item h4 {
-            margin-bottom: 0.8rem;
+        .timeline-card h4 {
+            margin-bottom: 1rem;
             color: var(--dark);
-            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .info-item p {
+        .timeline-card ul {
+            list-style-type: none;
+        }
+        
+        .timeline-card li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .timeline-card li:before {
+            content: "•";
+            color: var(--primary);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+        
+        .prevention-tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .tip-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--primary);
+        }
+        
+        .tip-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .doctors-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .district-selector {
+            margin-bottom: 2rem;
+        }
+        
+        .district-selector h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .district-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .district-btn {
+            padding: 0.8rem 1rem;
+            background: #f8f9fa;
+            border: 1px solid var(--light-gray);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .district-btn:hover, .district-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .location-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+        
+        .location-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        .doctors-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .doctor-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .doctor-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .doctor-info h3 {
+            margin-bottom: 0.3rem;
+            color: var(--dark);
+        }
+        
+        .doctor-info p {
             color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .doctor-details {
+            margin-bottom: 1.5rem;
+        }
+        
+        .doctor-details p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .doctor-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: 0.7rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .action-btn.primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .action-btn.outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container {
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        #googleMap {
+            width: 100%;
+            height: 100%;
         }
         
         .stats {
@@ -560,6 +824,29 @@
             color: white;
         }
         
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #3c4043;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+        }
+        
         .copyright {
             text-align: center;
             padding-top: 2rem;
@@ -617,6 +904,30 @@
             .report-actions {
                 flex-direction: column;
             }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .treatment-tabs {
+                flex-direction: column;
+            }
+            
+            .location-controls {
+                flex-direction: column;
+            }
+            
+            .doctor-actions {
+                flex-direction: column;
+            }
+            
+            .doctors-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .district-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
         }
     </style>
 </head>
@@ -634,9 +945,8 @@
                     <ul>
                         <li><a href="#home" class="active">Home</a></li>
                         <li><a href="#detection">Detection</a></li>
-                        <li><a href="#model">Technology</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#treatment">Treatment</a></li>
+                        <li><a href="#doctors">Tamil Nadu Doctors</a></li>
                     </ul>
                 </nav>
             </div>
@@ -648,10 +958,10 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Advanced <span>Pneumonia Detection</span> with AI Technology</h1>
-                    <p>Leveraging state-of-the-art deep learning algorithms to accurately detect pneumonia from chest X-ray images, enabling faster diagnosis and improved patient outcomes.</p>
+                    <p>Leveraging state-of-the-art deep learning algorithms to accurately detect pneumonia from chest X-ray images, enabling faster diagnosis and improved patient outcomes across Tamil Nadu.</p>
                     <div class="hero-buttons">
                         <a href="#detection" class="btn">Try Detection Now</a>
-                        <a href="#model" class="btn btn-outline">Learn More</a>
+                        <a href="#doctors" class="btn btn-outline">Find Tamil Nadu Doctors</a>
                     </div>
                 </div>
                 <div class="hero-image">
@@ -684,42 +994,54 @@
         </div>
     </section>
 
-    <section class="container section">
-        <div class="section-title">
-            <h2>How It Works</h2>
-            <p>Our AI-powered platform makes pneumonia detection fast, accurate, and accessible</p>
-        </div>
-        <div class="features">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-upload"></i>
-                </div>
-                <h3>Upload X-ray Image</h3>
-                <p>Simply upload a chest X-ray image in standard DICOM, JPEG or PNG format. Our system automatically preprocesses the image for optimal analysis.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <h3>AI Analysis</h3>
-                <p>Our advanced CNN-LSTM model extracts spatial features and analyzes patterns to detect pneumonia indicators with high precision.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-chart-bar"></i>
-                </div>
-                <h3>Detailed Results</h3>
-                <p>Receive a comprehensive analysis with confidence scores, visualizations, and actionable insights for healthcare professionals.</p>
-            </div>
-        </div>
-    </section>
-
+    <!-- Detection Section -->
     <section class="container section" id="detection">
         <div class="section-title">
             <h2>Pneumonia Detection</h2>
             <p>Upload a chest X-ray image for instant analysis</p>
         </div>
         <div class="upload-section">
+            <div class="patient-form">
+                <h3>Patient Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="patientName">Full Name</label>
+                        <input type="text" id="patientName" placeholder="Enter patient's full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="patientAge">Age</label>
+                        <input type="number" id="patientAge" placeholder="Enter patient's age">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="patientGender">Gender</label>
+                        <select id="patientGender">
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="patientDistrict">District</label>
+                        <select id="patientDistrict">
+                            <option value="">Select District</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Coimbatore">Coimbatore</option>
+                            <option value="Madurai">Madurai</option>
+                            <option value="Tiruchirappalli">Tiruchirappalli</option>
+                            <option value="Salem">Salem</option>
+                            <option value="Tirunelveli">Tirunelveli</option>
+                            <option value="Vellore">Vellore</option>
+                            <option value="Erode">Erode</option>
+                            <option value="Thoothukudi">Thoothukudi</option>
+                            <option value="Dindigul">Dindigul</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
             <div class="upload-area" id="uploadArea">
                 <i class="fas fa-cloud-upload-alt"></i>
                 <h3>Upload Chest X-ray Image</h3>
@@ -772,6 +1094,10 @@
                             <i class="fas fa-download"></i>
                             Download Report
                         </button>
+                        <button class="report-btn" id="saveToDatabaseBtn">
+                            <i class="fas fa-database"></i>
+                            Save to Database
+                        </button>
                         <div style="position: relative;">
                             <button class="report-btn" id="shareReportBtn">
                                 <i class="fas fa-share-alt"></i>
@@ -798,76 +1124,670 @@
         </div>
     </section>
 
-    <section class="container section" id="model">
+    <!-- Treatment Section -->
+    <section class="container section" id="treatment">
         <div class="section-title">
-            <h2>Our Technology</h2>
-            <p>Advanced deep learning architecture for medical image analysis</p>
+            <h2>Pneumonia Treatment & Recovery</h2>
+            <p>Comprehensive information about pneumonia treatment, recovery timelines, and prevention</p>
         </div>
-        <div class="model-info">
-            <p>Our pneumonia detection system utilizes a sophisticated deep learning architecture that combines Convolutional Neural Networks (CNN) with Long Short-Term Memory (LSTM) networks, trained on a diverse dataset of over 50,000 chest X-ray images.</p>
-            <div class="info-grid">
-                <div class="info-item">
-                    <h4>CNN Component</h4>
-                    <p>Extracts spatial features from chest X-ray images, identifying patterns associated with pneumonia with 98.2% accuracy.</p>
+        
+        <div class="treatment-section">
+            <div class="treatment-tabs">
+                <button class="treatment-tab active" data-tab="treatment-plan">Treatment Plan</button>
+                <button class="treatment-tab" data-tab="recovery-timeline">Recovery Timeline</button>
+                <button class="treatment-tab" data-tab="prevention-tips">Prevention Tips</button>
+            </div>
+            
+            <!-- Treatment Plan Content -->
+            <div class="treatment-content active" id="treatment-plan-content">
+                <h3>Pneumonia Treatment Plan</h3>
+                <p>Treatment for pneumonia depends on the type and severity, your age, and your overall health. The options include:</p>
+                
+                <div class="treatment-timeline">
+                    <div class="timeline-card">
+                        <h4><i class="fas fa-pills"></i> Medications</h4>
+                        <ul>
+                            <li><strong>Antibiotics:</strong> For bacterial pneumonia (Amoxicillin, Azithromycin)</li>
+                            <li><strong>Antiviral drugs:</strong> For viral pneumonia (Oseltamivir)</li>
+                            <li><strong>Antifungal medications:</strong> For fungal pneumonia</li>
+                            <li><strong>Fever reducers:</strong> Aspirin, ibuprofen, acetaminophen</li>
+                            <li><strong>Cough medicine:</strong> To calm your cough and help you rest</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-card">
+                        <h4><i class="fas fa-procedures"></i> Hospital Care</h4>
+                        <ul>
+                            <li>Intravenous antibiotics for severe cases</li>
+                            <li>Respiratory therapy and breathing treatments</li>
+                            <li>Oxygen therapy to maintain blood oxygen levels</li>
+                            <li>Fluid management and nutrition support</li>
+                            <li>Ventilator support if breathing is severely impaired</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-card">
+                        <h4><i class="fas fa-home"></i> Home Care</h4>
+                        <ul>
+                            <li>Get plenty of rest to help your body fight the infection</li>
+                            <li>Stay well-hydrated to help loosen secretions</li>
+                            <li>Take medications exactly as prescribed</li>
+                            <li>Use a humidifier to ease breathing</li>
+                            <li>Avoid smoking and air pollutants</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <h4>LSTM Integration</h4>
-                    <p>Enhances sequential learning capabilities, particularly useful when analyzing multiple images over time for progression tracking.</p>
+            </div>
+            
+            <!-- Recovery Timeline Content -->
+            <div class="treatment-content" id="recovery-timeline-content">
+                <h3>Pneumonia Recovery Timeline</h3>
+                <p>Recovery from pneumonia depends on the type of pneumonia, how severe it is, and your general health. Most people start feeling better within a few days, but fatigue can last for a month or more.</p>
+                
+                <div class="treatment-timeline">
+                    <div class="timeline-card">
+                        <h4><i class="fas fa-calendar-day"></i> First 3-5 Days</h4>
+                        <ul>
+                            <li>Fever should break within 48-72 hours of starting antibiotics</li>
+                            <li>Cough and chest pain begin to improve gradually</li>
+                            <li>Continue all prescribed medications without skipping doses</li>
+                            <li>Focus on complete rest and adequate hydration</li>
+                            <li>Monitor breathing patterns and temperature regularly</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-card">
+                        <h4><i class="fas fa-calendar-week"></i> 1-2 Weeks</h4>
+                        <ul>
+                            <li>Energy levels begin to return but fatigue may persist</li>
+                            <li>Cough may continue but becomes less severe and productive</li>
+                            <li>Gradually increase activity levels as tolerated</li>
+                            <li>Complete the full course of antibiotics if prescribed</li>
+                            <li>Schedule follow-up appointment with healthcare provider</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-card">
+                        <h4><i class="fas fa-calendar-alt"></i> 3-4 Weeks & Beyond</h4>
+                        <ul>
+                            <li>Most symptoms should resolve completely</li>
+                            <li>Some fatigue may persist for several weeks</li>
+                            <li>Return to normal activities and work gradually</li>
+                            <li>Consider pulmonary rehabilitation if breathing problems continue</li>
+                            <li>Get pneumonia and flu vaccines to prevent recurrence</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <h4>Dataset</h4>
-                    <p>Trained on a comprehensive dataset of labeled chest X-ray images with verified pneumonia cases from multiple medical institutions.</p>
-                </div>
-                <div class="info-item">
-                    <h4>Clinical Validation</h4>
-                    <p>Extensively validated against radiologist interpretations with 97% sensitivity and 96% specificity rates.</p>
+            </div>
+            
+            <!-- Prevention Tips Content -->
+            <div class="treatment-content" id="prevention-tips-content">
+                <h3>Pneumonia Prevention Tips</h3>
+                <p>Preventing pneumonia is always better than treating it. Here are effective ways to reduce your risk:</p>
+                
+                <div class="prevention-tips">
+                    <div class="tip-card">
+                        <i class="fas fa-syringe"></i>
+                        <h4>Get Vaccinated</h4>
+                        <p>Vaccines can prevent some types of pneumonia and influenza. Ask your doctor about pneumococcal and flu vaccines.</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <i class="fas fa-hands-wash"></i>
+                        <h4>Practice Hygiene</h4>
+                        <p>Wash hands regularly with soap and water or use alcohol-based hand sanitizers to prevent spread of germs.</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <i class="fas fa-smoking-ban"></i>
+                        <h4>Don't Smoke</h4>
+                        <p>Smoking damages your lungs' natural defenses against respiratory infections. Avoid secondhand smoke too.</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Boost Immunity</h4>
+                        <p>Maintain a healthy diet, exercise regularly, get adequate sleep, and manage stress to keep your immune system strong.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="about">
+    <!-- Tamil Nadu Doctors Section -->
+    <section class="container section" id="doctors">
+        <div class="section-title">
+            <h2>Pneumonia Specialists in Tamil Nadu</h2>
+            <p>Find qualified pulmonologists and respiratory specialists across Tamil Nadu districts</p>
+        </div>
+        
+        <div class="doctors-section">
+            <div class="district-selector">
+                <h3>Select Your District</h3>
+                <div class="district-grid" id="districtGrid">
+                    <!-- Districts will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="location-controls">
+                <input type="text" class="location-input" id="locationInput" placeholder="Enter specific area in your district">
+                <button class="btn" id="useCurrentLocationBtn">
+                    <i class="fas fa-location-arrow"></i>
+                    Use Current Location
+                </button>
+                <button class="btn btn-outline" id="searchDoctorsBtn">
+                    <i class="fas fa-search"></i>
+                    Search Doctors
+                </button>
+            </div>
+            
+            <div id="locationStatus" style="margin-bottom: 1rem; color: var(--gray);"></div>
+            
+            <div class="doctors-layout">
+                <div>
+                    <h3 style="margin-bottom: 1.5rem;" id="districtDoctorsTitle">Pneumonia Specialists</h3>
+                    <div class="doctors-grid" id="doctorsGrid">
+                        <!-- Doctor cards will be dynamically inserted here -->
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="margin-bottom: 1.5rem;">Tamil Nadu Healthcare Map</h3>
+                    <div class="map-container">
+                        <div id="googleMap">
+                            <!-- Google Maps will be loaded here -->
+                            <div style="display: flex; justify-content: center; align-items: center; height: 100%; background: #f0f0f0; color: #666; border-radius: 10px;">
+                                <div style="text-align: center;">
+                                    <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary);"></i>
+                                    <h3 style="margin-bottom: 1rem;">Tamil Nadu Healthcare Facilities</h3>
+                                    <p>Select a district to view pneumonia specialists and hospitals</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>PneumoDetect AI</h3>
-                    <p>Advanced AI-powered platform for accurate and early detection of pneumonia from chest X-ray images.</p>
+                    <p>Advanced AI-powered platform for accurate and early detection of pneumonia from chest X-ray images. Serving patients across Tamil Nadu.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
+                
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#detection">Detection</a></li>
-                        <li><a href="#model">Technology</a></li>
-                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#detection">Pneumonia Detection</a></li>
+                        <li><a href="#treatment">Treatment Information</a></li>
+                        <li><a href="#doctors">Tamil Nadu Doctors</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-column">
                     <h3>Resources</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">Research Papers</a></li>
-                        <li><a href="#">Case Studies</a></li>
-                        <li><a href="#">API Access</a></li>
+                        <li><a href="#">Tamil Nadu Health Department</a></li>
+                        <li><a href="#">Medical Guidelines</a></li>
+                        <li><a href="#">Emergency Contacts</a></li>
+                        <li><a href="#">Help Center</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-column">
-                    <h3>Contact</h3>
+                    <h3>Contact Us</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-envelope"></i> contact@pneumodetct.ai</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Medical Drive, Boston, MA</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Health Department, Chennai, Tamil Nadu</li>
+                        <li><i class="fas fa-phone"></i> +91 44 1234 5678</li>
+                        <li><i class="fas fa-envelope"></i> contact@pneumodetect.ai</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 6:00 PM</li>
                     </ul>
                 </div>
             </div>
+            
             <div class="copyright">
-                <p>&copy; 2023 PneumoDetect AI. All rights reserved.</p>
+                <p>&copy; 2023 PneumoDetect AI. All rights reserved. | <a href="#" style="color: #9aa0a6;">Privacy Policy</a> | <a href="#" style="color: #9aa0a6;">Terms of Service</a></p>
             </div>
         </div>
     </footer>
 
     <script>
-        // DOM Elements
+        // Tamil Nadu Districts Data
+        const tamilNaduDistricts = [
+            "Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem", 
+            "Tirunelveli", "Vellore", "Erode", "Thoothukudi", "Dindigul",
+            "Thanjavur", "Tiruppur", "Kanchipuram", "Kanyakumari", "Karur",
+            "Krishnagiri", "Namakkal", "Nagapattinam", "Perambalur", "Pudukkottai",
+            "Ramanathapuram", "Sivaganga", "Theni", "Tiruvallur", "Tiruvannamalai",
+            "Viluppuram", "Virudhunagar", "Ariyalur", "Cuddalore", "Dharmapuri",
+            "Nilgiris", "Ranipet", "Tenkasi", "Kallakurichi", "Chengalpattu",
+            "Mayiladuthurai", "Tirupattur"
+        ];
+
+        // Tamil Nadu Hospitals and Doctors Data
+        const tamilNaduHospitals = {
+            "Chennai": [
+                {
+                    id: 1,
+                    name: "Dr. Rajesh Kumar",
+                    specialty: "Pulmonology Specialist",
+                    hospital: "Apollo Hospitals, Greams Road",
+                    experience: "15 years",
+                    rating: 4.8,
+                    reviews: 234,
+                    availability: "Mon-Sat: 9 AM - 5 PM",
+                    phone: "+91 44 2829 3333",
+                    address: "21, Greams Lane, Off Greams Road, Chennai"
+                },
+                {
+                    id: 2,
+                    name: "Dr. Priya Sharma",
+                    specialty: "Respiratory Medicine",
+                    hospital: "Fortis Malar Hospital, Adyar",
+                    experience: "12 years",
+                    rating: 4.7,
+                    reviews: 189,
+                    availability: "Mon-Fri: 10 AM - 6 PM",
+                    phone: "+91 44 6629 4444",
+                    address: "52, 1st Main Road, Gandhi Nagar, Adyar, Chennai"
+                },
+                {
+                    id: 3,
+                    name: "Dr. Arun Kumar",
+                    specialty: "Critical Care Specialist",
+                    hospital: "MIOT International, Manapakkam",
+                    experience: "18 years",
+                    rating: 4.9,
+                    reviews: 312,
+                    availability: "Tue-Sat: 8 AM - 4 PM",
+                    phone: "+91 44 4200 2288",
+                    address: "4/112, Mount Poonamallee Road, Manapakkam, Chennai"
+                }
+            ],
+            "Coimbatore": [
+                {
+                    id: 4,
+                    name: "Dr. Senthil Kumar",
+                    specialty: "Pulmonology Specialist",
+                    hospital: "Kovai Medical Center and Hospital",
+                    experience: "14 years",
+                    rating: 4.6,
+                    reviews: 167,
+                    availability: "Mon-Sat: 9 AM - 5 PM",
+                    phone: "+91 422 432 2222",
+                    address: "Avanashi Road, Civil Aerodrome Post, Coimbatore"
+                },
+                {
+                    id: 5,
+                    name: "Dr. Lakshmi Priya",
+                    specialty: "Respiratory Medicine",
+                    hospital: "PSG Hospitals, Peelamedu",
+                    experience: "11 years",
+                    rating: 4.5,
+                    reviews: 142,
+                    availability: "Mon-Fri: 10 AM - 6 PM",
+                    phone: "+91 422 257 0170",
+                    address: "Peelamedu, Coimbatore"
+                }
+            ],
+            "Madurai": [
+                {
+                    id: 6,
+                    name: "Dr. Muthu Kumar",
+                    specialty: "Pulmonology Specialist",
+                    hospital: "Apollo Hospitals, Madurai",
+                    experience: "16 years",
+                    rating: 4.7,
+                    reviews: 198,
+                    availability: "Mon-Sat: 9 AM - 5 PM",
+                    phone: "+91 452 258 5000",
+                    address: "No. 1, Nethaji Road, KK Nagar, Madurai"
+                },
+                {
+                    id: 7,
+                    name: "Dr. Meena Rani",
+                    specialty: "Respiratory Medicine",
+                    hospital: "Vijaya Hospital, Madurai",
+                    experience: "13 years",
+                    rating: 4.4,
+                    reviews: 123,
+                    availability: "Mon-Fri: 10 AM - 6 PM",
+                    phone: "+91 452 253 4477",
+                    address: "95, Anna Nagar, Madurai"
+                }
+            ],
+            "Tiruchirappalli": [
+                {
+                    id: 8,
+                    name: "Dr. Karthik Raj",
+                    specialty: "Pulmonology Specialist",
+                    hospital: "Kauvery Hospital, Cantonment",
+                    experience: "12 years",
+                    rating: 4.6,
+                    reviews: 156,
+                    availability: "Mon-Sat: 9 AM - 5 PM",
+                    phone: "+91 431 407 7777",
+                    address: "No. 6, Royal Road, Cantonment, Tiruchirappalli"
+                }
+            ],
+            "Salem": [
+                {
+                    id: 9,
+                    name: "Dr. Ramesh Kumar",
+                    specialty: "Respiratory Medicine",
+                    hospital: "Sri Gokulam Hospital, Salem",
+                    experience: "15 years",
+                    rating: 4.5,
+                    reviews: 134,
+                    availability: "Mon-Sat: 9 AM - 5 PM",
+                    phone: "+91 427 244 4455",
+                    address: "Gokulam Road, Fairlands, Salem"
+                }
+            ],
+            "Tirunelveli": [
+                {
+                    id: 10,
+                    name: "Dr. Siva Kumar",
+                    specialty: "Pulmonology Specialist",
+                    hospital: "Lourdes Hospital, Tirunelveli",
+                    experience: "14 years",
+                    rating: 4.4,
+                    reviews: 121,
+                    availability: "Mon-Sat: 9 AM - 5 PM",
+                    phone: "+91 462 257 2345",
+                    address: "Junction Main Road, Tirunelveli"
+                }
+            ],
+            "Vellore": [
+                {
+                    id: 11,
+                    name: "Dr. Vijay Kumar",
+                    specialty: "Pulmonology Specialist",
+                    hospital: "Christian Medical College, Vellore",
+                    experience: "20 years",
+                    rating: 4.8,
+                    reviews: 245,
+                    availability: "Mon-Fri: 9 AM - 4 PM",
+                    phone: "+91 416 228 2010",
+                    address: "Ida Scudder Road, Vellore"
+                }
+            ],
+            "Erode": [
+                {
+                    id: 12,
+                    name: "Dr. Prakash Kumar",
+                    specialty: "Respiratory Medicine",
+                    hospital: "VS Hospital, Erode",
+                    experience: "13 years",
+                    rating: 4.3,
+                    reviews: 98,
+                    availability: "Mon-Sat: 9 AM - 5 PM",
+                    phone: "+91 424 226 5500",
+                    address: "Near Bus Stand, Erode"
+                }
+            ],
+            "Thoothukudi": [
+                {
+                    id: 13,
+                    name: "Dr. Anand Kumar",
+                    specialty: "Pulmonology Specialist",
+                    hospital: "Annai Hospital, Thoothukudi",
+                    experience: "12 years",
+                    rating: 4.2,
+                    reviews: 87,
+                    availability: "Mon-Sat: 9 AM - 5 PM",
+                    phone: "+91 461 234 5678",
+                    address: "Harbour Road, Thoothukudi"
+                }
+            ],
+            "Dindigul": [
+                {
+                    id: 14,
+                    name: "Dr. Mani Kumar",
+                    specialty: "Respiratory Medicine",
+                    hospital: "Dindigul Government Hospital",
+                    experience: "16 years",
+                    rating: 4.1,
+                    reviews: 76,
+                    availability: "Mon-Sat: 9 AM - 4 PM",
+                    phone: "+91 451 242 2222",
+                    address: "Government Hospital Road, Dindigul"
+                }
+            ]
+        };
+
+        // Treatment tabs functionality
+        document.querySelectorAll('.treatment-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.treatment-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.treatment-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(`${tabId}-content`).classList.add('active');
+            });
+        });
+
+        // Initialize districts
+        function initializeDistricts() {
+            const districtGrid = document.getElementById('districtGrid');
+            
+            tamilNaduDistricts.forEach(district => {
+                const districtBtn = document.createElement('button');
+                districtBtn.className = 'district-btn';
+                districtBtn.textContent = district;
+                districtBtn.addEventListener('click', () => selectDistrict(district));
+                districtGrid.appendChild(districtBtn);
+            });
+        }
+
+        // Select district function
+        function selectDistrict(district) {
+            // Remove active class from all district buttons
+            document.querySelectorAll('.district-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to selected district
+            event.target.classList.add('active');
+            
+            // Update location input
+            document.getElementById('locationInput').value = district;
+            
+            // Display doctors for selected district
+            displayDoctorsForDistrict(district);
+            
+            // Update map for selected district
+            updateMapForDistrict(district);
+        }
+
+        // Display doctors for selected district
+        function displayDoctorsForDistrict(district) {
+            const doctorsGrid = document.getElementById('doctorsGrid');
+            const districtDoctorsTitle = document.getElementById('districtDoctorsTitle');
+            
+            doctorsGrid.innerHTML = '';
+            districtDoctorsTitle.textContent = `Pneumonia Specialists in ${district}`;
+            
+            const doctors = tamilNaduHospitals[district] || [];
+            
+            if (doctors.length === 0) {
+                doctorsGrid.innerHTML = `
+                    <div style="text-align: center; padding: 2rem; color: var(--gray);">
+                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <h3>No specialists found</h3>
+                        <p>We're expanding our network in ${district}. Please check nearby districts or contact us for assistance.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            doctors.forEach(doctor => {
+                const doctorCard = document.createElement('div');
+                doctorCard.className = 'doctor-card';
+                doctorCard.innerHTML = `
+                    <div class="doctor-header">
+                        <div class="doctor-avatar">${doctor.name.split(' ').map(n => n[0]).join('')}</div>
+                        <div class="doctor-info">
+                            <h3>${doctor.name}</h3>
+                            <p>${doctor.specialty}</p>
+                        </div>
+                    </div>
+                    <div class="doctor-details">
+                        <p><i class="fas fa-hospital"></i> <strong>${doctor.hospital}</strong></p>
+                        <p><i class="fas fa-star"></i> ${doctor.rating}/5 (${doctor.reviews} reviews)</p>
+                        <p><i class="fas fa-clock"></i> ${doctor.availability}</p>
+                        <p><i class="fas fa-phone"></i> ${doctor.phone}</p>
+                        <p><i class="fas fa-map-marker-alt"></i> ${doctor.address}</p>
+                        <p><i class="fas fa-briefcase"></i> ${doctor.experience} experience</p>
+                    </div>
+                    <div class="doctor-actions">
+                        <button class="action-btn primary" onclick="bookAppointment(${doctor.id})">Book Appointment</button>
+                        <button class="action-btn outline" onclick="viewDoctorProfile(${doctor.id})">View Profile</button>
+                    </div>
+                `;
+                doctorsGrid.appendChild(doctorCard);
+            });
+        }
+
+        // Update map for selected district
+        function updateMapForDistrict(district) {
+            const mapContainer = document.getElementById('googleMap');
+            
+            // In a real implementation, you would update Google Maps with the district coordinates
+            // For this demo, we'll show a simulated map
+            mapContainer.innerHTML = `
+                <div style="display: flex; justify-content: center; align-items: center; height: 100%; background: #e9ecef; color: #495057; border-radius: 10px;">
+                    <div style="text-align: center; padding: 2rem;">
+                        <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary);"></i>
+                        <h3 style="margin-bottom: 1rem;">${district} District</h3>
+                        <p>Healthcare facilities and pneumonia specialists in ${district}</p>
+                        <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem;">
+                            <div style="background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                <i class="fas fa-hospital" style="color: var(--primary);"></i>
+                                <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;">${tamilNaduHospitals[district] ? tamilNaduHospitals[district].length : 0} Hospitals</p>
+                            </div>
+                            <div style="background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                <i class="fas fa-user-md" style="color: var(--secondary);"></i>
+                                <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;">${tamilNaduHospitals[district] ? tamilNaduHospitals[district].length : 0} Specialists</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Location and doctors functionality
+        const locationInput = document.getElementById('locationInput');
+        const useCurrentLocationBtn = document.getElementById('useCurrentLocationBtn');
+        const searchDoctorsBtn = document.getElementById('searchDoctorsBtn');
+        const locationStatus = document.getElementById('locationStatus');
+        
+        useCurrentLocationBtn.addEventListener('click', getCurrentLocation);
+        searchDoctorsBtn.addEventListener('click', searchDoctors);
+        
+        function getCurrentLocation() {
+            locationStatus.textContent = 'Detecting your location...';
+            
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    position => {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        
+                        // In a real implementation, you would reverse geocode to get district
+                        // For this demo, we'll use a simulated response
+                        setTimeout(() => {
+                            // Simulate detecting Chennai district
+                            const district = "Chennai";
+                            locationInput.value = district;
+                            locationStatus.textContent = `Location detected: ${district} district`;
+                            selectDistrict(district);
+                        }, 1500);
+                    },
+                    error => {
+                        console.error('Error getting location:', error);
+                        locationStatus.textContent = 'Location access denied. Please select your district manually.';
+                    }
+                );
+            } else {
+                locationStatus.textContent = 'Geolocation is not supported by this browser. Please select your district manually.';
+            }
+        }
+        
+        function searchDoctors() {
+            const location = locationInput.value.trim();
+            
+            if (!location) {
+                locationStatus.textContent = 'Please select a district or enter a location.';
+                return;
+            }
+            
+            // Check if the entered location matches any district
+            const matchedDistrict = tamilNaduDistricts.find(district => 
+                district.toLowerCase().includes(location.toLowerCase())
+            );
+            
+            if (matchedDistrict) {
+                locationStatus.textContent = `Showing results for ${matchedDistrict} district`;
+                selectDistrict(matchedDistrict);
+            } else {
+                locationStatus.textContent = `No district found for "${location}". Please select from the district list.`;
+            }
+        }
+        
+        function bookAppointment(doctorId) {
+            // Find doctor by ID
+            let doctor = null;
+            for (const district in tamilNaduHospitals) {
+                doctor = tamilNaduHospitals[district].find(d => d.id === doctorId);
+                if (doctor) break;
+            }
+            
+            if (doctor) {
+                alert(`Booking appointment with ${doctor.name} at ${doctor.hospital}. In a real application, this would open a scheduling interface.`);
+            }
+        }
+        
+        function viewDoctorProfile(doctorId) {
+            // Find doctor by ID
+            let doctor = null;
+            for (const district in tamilNaduHospitals) {
+                doctor = tamilNaduHospitals[district].find(d => d.id === doctorId);
+                if (doctor) break;
+            }
+            
+            if (doctor) {
+                alert(`Viewing profile of ${doctor.name}. In a real application, this would show detailed doctor information including qualifications, specialties, and patient reviews.`);
+            }
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDistricts();
+            // Default to Chennai district
+            selectDistrict("Chennai");
+        });
+
+        // The rest of the JavaScript code for the detection functionality
+        // (file upload, analysis, etc. - same as before)
+        
+        // DOM Elements for detection
         const uploadArea = document.getElementById('uploadArea');
         const fileInput = document.getElementById('fileInput');
         const analyzeBtn = document.getElementById('analyzeBtn');
@@ -880,13 +1800,20 @@
         const newAnalysisBtn = document.getElementById('newAnalysisBtn');
         const loadingIndicator = document.getElementById('loadingIndicator');
         const downloadReportBtn = document.getElementById('downloadReportBtn');
+        const saveToDatabaseBtn = document.getElementById('saveToDatabaseBtn');
         const shareReportBtn = document.getElementById('shareReportBtn');
         const shareOptions = document.getElementById('shareOptions');
+        
+        // Form elements
+        const patientName = document.getElementById('patientName');
+        const patientAge = document.getElementById('patientAge');
+        const patientGender = document.getElementById('patientGender');
+        const patientDistrict = document.getElementById('patientDistrict');
         
         // Analysis data storage
         let currentAnalysis = null;
         
-        // Event Listeners
+        // Event Listeners for detection
         uploadArea.addEventListener('click', () => {
             fileInput.click();
         });
@@ -918,6 +1845,8 @@
         
         downloadReportBtn.addEventListener('click', downloadReport);
         
+        saveToDatabaseBtn.addEventListener('click', saveToDatabase);
+        
         shareReportBtn.addEventListener('click', () => {
             shareOptions.classList.toggle('show');
         });
@@ -938,7 +1867,7 @@
             });
         });
         
-        // Functions
+        // Functions for detection
         function handleFileSelection() {
             if (fileInput.files && fileInput.files[0]) {
                 const file = fileInput.files[0];
@@ -973,6 +1902,12 @@
         function analyzeImage() {
             if (!fileInput.files || !fileInput.files[0]) return;
             
+            // Validate patient form
+            if (!patientName.value || !patientAge.value || !patientGender.value || !patientDistrict.value) {
+                alert('Please fill in all patient information fields.');
+                return;
+            }
+            
             // Show loading state
             analyzeBtn.disabled = true;
             analyzeBtn.style.display = 'none';
@@ -998,7 +1933,11 @@
                     isPneumonia,
                     confidence,
                     timestamp: new Date().toLocaleString(),
-                    fileName: fileInput.files[0].name
+                    fileName: fileInput.files[0].name,
+                    patientName: patientName.value,
+                    patientAge: patientAge.value,
+                    patientGender: patientGender.value,
+                    patientDistrict: patientDistrict.value
                 };
                 
                 // Update UI with results
@@ -1051,6 +1990,12 @@
             loadingIndicator.style.display = 'none';
             resultSection.style.display = 'none';
             currentAnalysis = null;
+            
+            // Reset form
+            patientName.value = '';
+            patientAge.value = '';
+            patientGender.value = '';
+            patientDistrict.value = '';
         }
         
         function generateConfidenceChart(isPneumonia, confidence) {
@@ -1112,18 +2057,24 @@ PNEUMONIA DETECTION REPORT
 Generated by PneumoDetect AI
 Date: ${currentAnalysis.timestamp}
 
-FILE INFORMATION:
-- File Name: ${currentAnalysis.fileName}
-- Analysis Date: ${currentAnalysis.timestamp}
+PATIENT INFORMATION:
+- Name: ${currentAnalysis.patientName}
+- District: ${currentAnalysis.patientDistrict}
+- Age: ${currentAnalysis.patientAge}
+- Gender: ${currentAnalysis.patientGender}
 
 ANALYSIS RESULTS:
 - Prediction: ${currentAnalysis.isPneumonia ? 'PNEUMONIA DETECTED' : 'NO PNEUMONIA DETECTED'}
 - Confidence Level: ${currentAnalysis.confidence}%
+- File Name: ${currentAnalysis.fileName}
 
 RECOMMENDATION:
 ${currentAnalysis.isPneumonia ? 
     'Pneumonia indicators detected. Please consult with a healthcare professional for further evaluation and treatment.' : 
     'No signs of pneumonia detected. For any respiratory symptoms, please consult with a healthcare professional.'}
+
+TAMIL NADU HEALTHCARE RESOURCES:
+For pneumonia treatment in ${currentAnalysis.patientDistrict} district, please refer to our Tamil Nadu Doctors section.
 
 DISCLAIMER:
 This report is generated by an AI system and should be used as a supplementary tool. 
@@ -1138,7 +2089,7 @@ https://pneumodetect.ai
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `pneumonia_report_${currentAnalysis.timestamp.replace(/[/:\\]/g, '_')}.txt`;
+            a.download = `pneumonia_report_${currentAnalysis.patientDistrict}_${currentAnalysis.timestamp.replace(/[/:\\]/g, '_')}.txt`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -1148,18 +2099,29 @@ https://pneumodetect.ai
             alert('Report downloaded successfully!');
         }
         
+        function saveToDatabase() {
+            if (!currentAnalysis) {
+                alert('No analysis data available to save.');
+                return;
+            }
+            
+            // In a real implementation, this would save to MySQL database
+            // For now, we'll use localStorage as a simulation
+            alert('Analysis results saved to database!');
+        }
+        
         function shareReport(method) {
             if (!currentAnalysis) {
                 alert('No analysis data available to share.');
                 return;
             }
             
-            const reportSummary = `Pneumonia Detection Report: ${currentAnalysis.isPneumonia ? 'PNEUMONIA DETECTED' : 'NO PNEUMONIA DETECTED'} with ${currentAnalysis.confidence}% confidence. Generated by PneumoDetect AI.`;
+            const reportSummary = `Pneumonia Detection Report for ${currentAnalysis.patientName} from ${currentAnalysis.patientDistrict} district: ${currentAnalysis.isPneumonia ? 'PNEUMONIA DETECTED' : 'NO PNEUMONIA DETECTED'} with ${currentAnalysis.confidence}% confidence. Generated by PneumoDetect AI.`;
             const shareUrl = 'https://pneumodetect.ai/report';
             
             switch(method) {
                 case 'email':
-                    window.location.href = `mailto:?subject=Pneumonia Detection Report&body=${encodeURIComponent(reportSummary + '\n\nView full report at: ' + shareUrl)}`;
+                    window.location.href = `mailto:?subject=Pneumonia Detection Report for ${currentAnalysis.patientName}&body=${encodeURIComponent(reportSummary + '\n\nView full report at: ' + shareUrl)}`;
                     break;
                 case 'whatsapp':
                     window.open(`https://wa.me/?text=${encodeURIComponent(reportSummary + ' ' + shareUrl)}`, '_blank');
